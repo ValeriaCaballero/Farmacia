@@ -22,6 +22,9 @@ public class Frame extends JFrame {
 	private JTextField textField_nombre;
 	private JTextField textField_correo;
 	private JTextField textField_pedido;
+	
+	
+	Persona objpersona = new Persona(); 
 
 	/**
 	 * Launch the application.
@@ -140,6 +143,11 @@ public class Frame extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Objeto");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton_2.setBounds(308, 197, 89, 23);
 		contentPane.add(btnNewButton_2);

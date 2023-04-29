@@ -6,6 +6,10 @@ public class Persona {
 	String pedido;
 	
 	//Constructor 
+	
+	public Persona () {
+		
+	}
 	public Persona(String nombre, String correo, String pedido) {
 		super();
 		this.nombre = nombre;
@@ -38,4 +42,4 @@ public class Persona {
 		this.pedido = pedido;
 	} 
 	
-}//Ultimo
+}// Ultimo //
