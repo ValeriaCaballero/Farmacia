@@ -8,6 +8,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
 
 public class Frame extends JFrame {
 
@@ -82,6 +87,26 @@ public class Frame extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("Escribir ");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					BufferedWriter out = new BufferedWriter(new FileWriter("Pedidos.txt"));
+					String textnom = textField_nombre.getText();
+					String textcor = textField_correo.getText();
+					String textped = textField_pedido.getText();
+					
+					String cadena = ("Cliente:" + textnom + "Correo electrónico: " + textcor + "Pedido: " + textped); 
+					
+					out.newLine();//cambio de línea en el archivo
+					out.write(cadena); // escribimos toda la línea
+					out.close();
+					} catch (IOException o) {
+					// TODO Auto-generated catch block
+					System.out.println(o.getMessage());
+					o.printStackTrace();	
+			}
+		}
+	});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setBounds(40, 197, 89, 23);
 		contentPane.add(btnNewButton);
