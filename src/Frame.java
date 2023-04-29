@@ -9,7 +9,9 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
@@ -42,7 +44,7 @@ public class Frame extends JFrame {
 	 */
 	public Frame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 320);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -95,7 +97,7 @@ public class Frame extends JFrame {
 					String textcor = textField_correo.getText();
 					String textped = textField_pedido.getText();
 					
-					String cadena = ("Cliente:" + textnom + "Correo electrónico: " + textcor + "Pedido: " + textped); 
+					String cadena = ("Cliente:"+" "+ textnom+" "+" "+"Correo electrónico:"+" "+ textcor +" "+"Pedido:"+" "+ textped); 
 					
 					out.newLine();//cambio de línea en el archivo
 					out.write(cadena); // escribimos toda la línea
@@ -112,6 +114,27 @@ public class Frame extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Leer");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String texto = "";
+				try {
+				BufferedReader in = new BufferedReader(new FileReader("/Users/Javier Francisco/Git-Farmacia/Pedidos.txt"));
+				String linea = in.readLine();
+				while(linea!=null)
+					
+					
+					
+				{
+				texto =texto + linea+ '\n';
+				linea = in.readLine();
+				}
+				in.close();
+				}catch(IOException w) {
+					System.out.println(w.getMessage());
+				}
+					System.out.println(texto);
+			}
+		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton_1.setBounds(179, 197, 89, 23);
 		contentPane.add(btnNewButton_1);
@@ -120,5 +143,19 @@ public class Frame extends JFrame {
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton_2.setBounds(308, 197, 89, 23);
 		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Limpiar ");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//ESTO LIMPIA LOS TEXTFIELDS// 
+				textField_nombre.setText("");
+				textField_correo.setText("");
+				textField_pedido.setText("");
+				
+			}
+		});
+		btnNewButton_3.setBounds(175, 247, 89, 23);
+		contentPane.add(btnNewButton_3);
 	}
 }
