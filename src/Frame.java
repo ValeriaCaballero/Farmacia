@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -24,7 +26,7 @@ public class Frame extends JFrame {
 	private JTextField textField_pedido;
 	
 	
-	Persona objpersona = new Persona(); 
+	//Persona objpersona = new Persona(); 
 
 	/**
 	 * Launch the application.
@@ -146,6 +148,13 @@ public class Frame extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String textnom = textField_nombre.getText();
+				String textcor = textField_correo.getText();
+				String textped = textField_pedido.getText();
+				
+				//OBJETO 
+				Persona objpersona = new Persona(textnom,textcor,textped); 
+				JOptionPane.showMessageDialog(btnNewButton_2, objpersona); 
 			}
 		});
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
